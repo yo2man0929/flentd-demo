@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  fluentd:
+    build: .
+    ports:
+      - "24224:24224"
+
+  logger:
+    image: alpine:latest
+    command: sh -c 'while true; do date +"[%a %d %b %Y %T,000 %z] test"; sleep 1; done'
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: logger
+
+  splunk:
+    image: splunk/splunk:latest
+    environment:
+      SPLUNK_START_ARGS: --accept-license
+      SPLUNK_PASSWORD: 99E16DCD-E064-4D74-BBDA-E88CE902F600
+      SPLUNK_HEC_TOKEN: B5A79AAD-D822-46CC-80D1-819F80D7BFB0
+    ports:
+      - "8000:8000"
+      - "8088:8088"

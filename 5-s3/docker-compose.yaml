@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  fluentd:
+    build: .
+    volumes:
+      - $PWD/buffer:/var/log/fluent/s3
+    ports:
+      - "24224:24224"
+
+  logger:
+    image: alpine:latest
+    command: sh -c 'while true; do date +"[%a %d %b %Y %T,000 %z] test"; sleep 1; done'
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: logger
+
+  s3mock:
+    image: adobe/s3mock:latest
+    environment:
+      initialBuckets: logBucket
+    ports:
+      - "9090:9090"
+      - "9191:9191"

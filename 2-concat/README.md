@@ -1,5 +1,7 @@
 ## Introduction
 
+This example addresses the problem that fluentd driver will break multi-line logs into individual events. `concat` filter plug-in is used to concatenate log lines back into a single multi-line event. The following snippet shows the configuration. This example finds a certain pattern `multiline_start_regexp` in the `log` field of each event, and determines the starting line of each multi-line log. `stream_identity_key` is used to separate log from different container to prevent interference. `flush_interval` tells the plug-in to end a multi-line log if there's no more log lines received in 5 seconds.
+
 ```xml
 <source>
   @type forward
@@ -8,10 +10,10 @@
 
 <filter **>
   @type concat
-  key log
-  stream_identity_key container_id # prevent interference
-  multiline_start_regexp /^\[/
-  flush_interval 5s
+  stream_identity_key container_id # prevent interference between containers
+  key log                          # event field containing pattern of starting lines
+  multiline_start_regexp /^\[/     # pattern only present in starting lines
+  flush_interval 5s                # terminate multi-line logs if it's been idle for 5 secnds
   timeout_label @STDOUT
 </filter>
 
@@ -26,6 +28,8 @@
   </match>
 </label>
 ```
+
+`fluent-plugin-concat` will need to be installed in `fluentd` image.
 
 ```dockerfile
 FROM fluent/fluentd:latest
@@ -50,8 +54,11 @@ EXPOSE 24224
 docker-compose up fluentd
 ```
 
-2. Start logger containers
+2. Start 2 logger containers at the same time
 
 ```bash
 docker-compose up logger1 logger2
 ```
+
+Logs been print out by fluentd container should be mult-lined and logs from different containers should not be mixed up.
+

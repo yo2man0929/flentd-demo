@@ -3,6 +3,11 @@ services:
 
   fluentd:
     build: .
+    environment:
+      AWS_ACCESS_KEY_ID: YOUR_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: YOUR_SECRET_ACCESS_KEY
+      S3_REGION: local
+      S3_BUCKET: logBucket
     volumes:
       - $PWD/buffer:/var/log/fluent/s3
     ports:

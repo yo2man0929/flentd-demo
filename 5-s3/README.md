@@ -1,5 +1,7 @@
 ## Introduction
 
+This example will show how to sent batches of log events to S3 bucket. `fluent-plugin-s3` is used for this purpose. This plug-in uses environment variable to pass in AWS credentials. (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) It defines `s3_object_key_format` to customize object keys in S3 bucket. Furthermore, we enable S3 server-side encryption and file compression in this plug-in.
+
 ```xml
 <source>
   @type forward
@@ -8,14 +10,15 @@
 
 <match **>
   @type s3
-  aws_key_id YOUR_ACCESS_KEY_ID
-  aws_sec_key YOUR_SECRET_ACCESS_KEY
-  s3_endpoint http://s3mock:9090/
-  force_path_style true # s3mock server
-
-  s3_bucket logBucket
+  s3_bucket "#{ENV['S3_BUCKET']}"
+  s3_region "#{ENV['S3_REGION']}"
   path ${tag}/
   s3_object_key_format %{path}%{time_slice}_%{index}.%{file_extension}
+  use_server_side_encryption AES256
+  store_as gzip_command
+
+  s3_endpoint http://s3mock:9090/ # s3mock server
+  force_path_style true           # s3mock server
 
   <buffer tag,time>
     @type file
@@ -25,6 +28,8 @@
   </buffer>
 </match>
 ```
+
+`fluent-plugin-s3` will need to be installed in `fluentd` image.
 
 ```dockerfile
 FROM fluent/fluentd:latest

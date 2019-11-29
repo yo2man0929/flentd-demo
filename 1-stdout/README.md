@@ -2,7 +2,7 @@
 
 This example will show how to setup a `fluentd` container with basic configuration, and how to forward logs from other containers to it using docker logging driver.
 
-First, we need a `fluentd.conf` file to control the behavior of `fluentd` container. In the following snippet, it first defines a `forward` input plug-in. It will receive log events from port `24224`. Then, it defines a `stdout` output plug-in. It will print out all log events from the previous step to console.
+First, `fluentd.conf` should be defined to to control the behavior of `fluentd` container. In the following snippet, it first defines a `forward` input plug-in. It will receive log events from port `24224`. Then, it defines a `stdout` output plug-in. It will print out all log events from the previous step to console.
 
 ```xml
 <source>
@@ -15,7 +15,7 @@ First, we need a `fluentd.conf` file to control the behavior of `fluentd` contai
 </match>
 ```
 
-Then, we need to create a customized `fluentd` container with our config file.
+Then, a customized `fluentd` image should be created with our config file.
 
 ```dockerfile
 FROM fluent/fluentd:latest
@@ -25,7 +25,7 @@ COPY fluent.conf /fluentd/etc/
 EXPOSE 24224
 ```
 
-After we have our `fluentd` image container ready, we could attach docker logging driver it it. The following snippet of `docker-compose.yaml` shows the basic settings for `fluentd` logging driver.
+After the customized `fluentd` image is ready, docker logging drivers could start to attach to it. The following snippet of `docker-compose.yaml` shows the basic settings for `fluentd` logging driver.
 
 ```yml
     logging:

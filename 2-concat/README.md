@@ -1,6 +1,8 @@
 ## Introduction
 
-This example addresses the problem that fluentd driver will break multi-line logs into individual events. `concat` filter plug-in is used to concatenate log lines back into a single multi-line event. The following snippet shows the configuration. This example finds a certain pattern `multiline_start_regexp` in the `log` field of each event, and determines the starting line of each multi-line log. `stream_identity_key` is used to separate log from different container to prevent interference. `flush_interval` tells the plug-in to end a multi-line log if there's no more log lines received in 5 seconds.
+This example addresses the problem that fluentd driver will break multi-line logs into individual events. 
+
+`fluent-plugin-concat` plug-in is used to concatenate log lines back into a single multi-line event. The following snippet shows the content of `fluentd.confg`. This example finds a certain pattern `multiline_start_regexp` in the `log` field of each event, and determines the starting line of each multi-line log. `stream_identity_key` is used to separate log from different container to prevent interference. `flush_interval` tells the plug-in to end a multi-line log if there's no more log lines received in 5 seconds.
 
 ```xml
 <source>

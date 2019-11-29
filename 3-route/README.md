@@ -1,6 +1,8 @@
 ## Introduction
 
-This example shows how to send the same event to two different destination. Sometimes, it's required to make multiple copies of logs for different purposes, e.g. splunk for monitoring, S3 bucket for archiving & auditing, ... `route` plug-in is used for the purpose. The following config make every forwarded event into 2 copies. One for writing to files and one for printing out to console. `label` is utilized to config more complex pipeline like this.
+This example shows how to send the same event to two different destination, e.g. Splunk for monitoring, S3 bucket for archiving & auditing, ...
+
+`fluent-plugin-route` plug-in is used for the purpose. The following config make every forwarded event into 2 copies. One for writing to files and one for printing out to console. `label` is utilized to config more complex pipeline like this.
 
 ```xml
 <source>

@@ -1,6 +1,8 @@
 ## Introduction
 
-This example will show how to sent batches of log events to S3 bucket. `fluent-plugin-s3` is used for this purpose. This plug-in uses environment variable to pass in AWS credentials. (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) It defines `s3_object_key_format` to customize object keys in S3 bucket. Furthermore, we enable S3 server-side encryption and file compression in this plug-in.
+This example will show how to sent batches of log events to S3 bucket.
+
+`fluent-plugin-s3` is used for this purpose. This plug-in uses environment variable to pass in AWS credentials. (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) It defines `s3_object_key_format` to customize object keys in S3 bucket. Furthermore, we enable S3 server-side encryption and file compression in this plug-in.
 
 ```xml
 <source>

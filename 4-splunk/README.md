@@ -1,6 +1,8 @@
 ## Introduction
 
-This example shows how to used fluentd to forward log events to splunk. `fluent-plugin-splunk-hec` is used for this purpose. It communitates with Splunk through HEC (HTTP Event Collector) protocol. It requires an HEC token, which should be created in Splunk UI in advance. In this example, the HEC token is passed in from environment variable. It's a more secure way to avoid hard-coded secret tokens.
+This example shows how to used fluentd to forward log events to Splunk.
+
+`fluent-plugin-splunk-hec` is used for this purpose. It communitates with Splunk through HEC (HTTP Event Collector) protocol. It requires an HEC token, which should be created in Splunk UI in advance. In this example, the HEC token is passed in from environment variable. It's a more secure way to avoid hard-coded secret tokens.
 
 ```xml
 <source>

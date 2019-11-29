@@ -1,8 +1,8 @@
 ## Introduction
 
-This example will show how to setup a `fluentd` container with basic configuration, and how to forward logs from other containers to it using docker logging driver.
+This example will show how to setup a `fluentd` container and how to forward logs from other containers using docker logging driver.
 
-First, `fluentd.conf` should be defined to to control the behavior of `fluentd` container. In the following snippet, it first defines a `forward` input plug-in. It will receive log events from port `24224`. Then, it defines a `stdout` output plug-in. It will print out all log events from the previous step to console.
+First, `fluentd.conf` should be defined to to control the behavior of `fluentd` container. In the following snippet, it first defines a `forward` input plug-in. It will receive log events from port `24224`. Then, it defines a `stdout` output plug-in. It will pick up alllog events from the previous step and print out to console.
 
 ```xml
 <source>

@@ -1,4 +1,4 @@
-### Introduction
+## Introduction
 
 This example will show how to setup a `fluentd` container with basic configuration, and how to forward logs from other containers to it using docker logging driver.
 
@@ -35,7 +35,7 @@ After we have our `fluentd` image container ready, we could attach docker loggin
         tag: logger
 ```
 
-### Instructions
+## Instructions
 
 1. Start fluentd container
 

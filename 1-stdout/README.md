@@ -39,12 +39,12 @@ After the customized `fluentd` image is ready, docker logging drivers could star
 
 1. Start fluentd container
 
-```bash
+  ```bash
 docker-compose up fluentd
 ```
 
 2. Start logger container
 
-```bash
+  ```bash
 docker-compose up logger
 ```

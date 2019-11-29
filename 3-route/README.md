@@ -57,14 +57,14 @@ EXPOSE 24224
 
 1. Start fluentd container
 
-```bash
+  ```bash
 docker-compose up fluentd
 ```
 
 2. Start logger containers
 
-```bash
+  ```bash
 docker-compose up logger
 ```
 
-Logs should be printed out by `fluentd` container and also be saved to files in folder `output`.
+  Logs should be printed out by `fluentd` container and also be saved to files in folder `output`.

@@ -52,15 +52,15 @@ EXPOSE 24224
 
 1. Start fluentd container
 
-```bash
+  ```bash
 docker-compose up fluentd
 ```
 
 2. Start 2 logger containers at the same time
 
-```bash
+  ```bash
 docker-compose up logger1 logger2
 ```
 
-Logs been print out by fluentd container should be mult-lined and logs from different containers should not be mixed up.
+  Logs been print out by fluentd container should be mult-lined and logs from different containers should not be mixed up.
 

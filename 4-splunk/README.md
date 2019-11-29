@@ -44,19 +44,19 @@ EXPOSE 24224
 
 1. Start splunk container
 
-```bash
+  ```bash
 docker-compose up splunk
 ```
 
 2. Start fluentd container
 
-```bash
+  ```bash
 docker-compose up fluentd
 ```
 
 3. Start logger containers
 
-```bash
+  ```bash
 docker-compose up logger
 ```
 

@@ -52,24 +52,24 @@ EXPOSE 24224
 
 1. Start s3mock container
 
-```bash
+  ```bash
 docker-compose up s3mock
 ```
 
 2. Start fluentd container
 
-```bash
+  ```bash
 docker-compose up fluentd
 ```
 
 3. Start logger containers
 
-```bash
+  ```bash
 docker-compose up logger
 ```
 
 4. Check the content of S3 bucket to see the logs being forward from `fluentd`.
 
-```bash
+  ```bash
 curl http://localhost:9090/logBucket | xmllint --format -
 ```

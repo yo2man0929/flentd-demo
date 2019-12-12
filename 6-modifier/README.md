@@ -27,7 +27,7 @@ The following config uses ${xxx} placeholders and accesses the values of tag, ti
 </match>
 ```
 
-If following record is passed:
+- If following record is passed:
 ```json
 {
   "container_id":"88888",
@@ -36,7 +36,8 @@ If following record is passed:
   "log":"hello world!"
 }
 ```
-then you got the new record like below:
+
+- then you got the new record like below:
 ```json
 {
   "foo":"bar",

@@ -2,7 +2,7 @@
 
 This example will show how to parse a specific filed in event records and modify its records with the parsed result.
 
-`fluent_parser` is used to parse the user's custom data formant, and it is in Fluentd's core and requires no installation. It allows to use built-in parser plugins or your own customized parser plugin.
+`fluent_parser` is used to parse the user's custom data format, and it is in Fluentd's core and requires no installation. It allows to use built-in parser plugins or your own customized parser plugin.
 
 In the following config, we use the `regexp` built-in parsers to retrieve key-value pairs in the `log` filed.
 

@@ -1,0 +1,16 @@
+version: '3'
+services:
+
+  fluentd:
+    build: .
+    ports:
+      - "24224:24224"
+
+  logger:
+    image: alpine:latest
+    command: sh -c 'while true; do date +"[%a %d %b %Y %T,000 %z] provider=provide1, item=item1, merchant=merchant1 "; sleep 1; done'
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: logger

@@ -60,4 +60,4 @@ docker-compose up fluentd
 docker-compose up logger
 ```
 
-4. Login to splunk UI at `http://localhost:8000` with user `admin` and password `99E16DCD-E064-4D74-BBDA-E88CE902F600`. Search with query `index=*` to see the logs being forward from `fluentd`.
+4. Login to splunk UI at `http://localhost:8000` with user `admin` and password `99E16DCD-E064-4D74-BBDA-E88CE902F600`. Search with query `index=* | eval _raw=log` to see the logs being forward from `fluentd`.
